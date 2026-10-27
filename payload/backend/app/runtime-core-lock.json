@@ -1,0 +1,1048 @@
+{
+  "distributions": [
+    {
+      "name": "aiocqhttp",
+      "top_level_modules": [
+        "aiocqhttp"
+      ],
+      "version": "1.4.4"
+    },
+    {
+      "name": "aiodocker",
+      "top_level_modules": [],
+      "version": "0.27.0"
+    },
+    {
+      "name": "aiofiles",
+      "top_level_modules": [],
+      "version": "25.1.0"
+    },
+    {
+      "name": "aiohappyeyeballs",
+      "top_level_modules": [],
+      "version": "2.7.1"
+    },
+    {
+      "name": "aiohttp",
+      "top_level_modules": [
+        "aiohttp"
+      ],
+      "version": "3.14.3"
+    },
+    {
+      "name": "aiosignal",
+      "top_level_modules": [
+        "aiosignal"
+      ],
+      "version": "1.4.0"
+    },
+    {
+      "name": "aiosqlite",
+      "top_level_modules": [],
+      "version": "0.22.1"
+    },
+    {
+      "name": "annotated-doc",
+      "top_level_modules": [],
+      "version": "0.0.5"
+    },
+    {
+      "name": "annotated-types",
+      "top_level_modules": [],
+      "version": "0.8.0"
+    },
+    {
+      "name": "anthropic",
+      "top_level_modules": [],
+      "version": "0.124.0"
+    },
+    {
+      "name": "anyio",
+      "top_level_modules": [
+        "anyio"
+      ],
+      "version": "4.14.2"
+    },
+    {
+      "name": "APScheduler",
+      "top_level_modules": [
+        "apscheduler"
+      ],
+      "version": "3.11.3"
+    },
+    {
+      "name": "attrs",
+      "top_level_modules": [],
+      "version": "26.1.0"
+    },
+    {
+      "name": "beautifulsoup4",
+      "top_level_modules": [],
+      "version": "4.15.0"
+    },
+    {
+      "name": "blinker",
+      "top_level_modules": [],
+      "version": "1.9.0"
+    },
+    {
+      "name": "certifi",
+      "top_level_modules": [
+        "certifi"
+      ],
+      "version": "2026.7.22"
+    },
+    {
+      "name": "cffi",
+      "top_level_modules": [
+        "_cffi_backend",
+        "cffi"
+      ],
+      "version": "2.1.1"
+    },
+    {
+      "name": "chardet",
+      "top_level_modules": [
+        "chardet"
+      ],
+      "version": "5.1.0"
+    },
+    {
+      "name": "charset-normalizer",
+      "top_level_modules": [
+        "charset_normalizer"
+      ],
+      "version": "3.5.1"
+    },
+    {
+      "name": "click",
+      "top_level_modules": [],
+      "version": "8.4.2"
+    },
+    {
+      "name": "cobble",
+      "top_level_modules": [
+        "cobble"
+      ],
+      "version": "0.1.4"
+    },
+    {
+      "name": "colorama",
+      "top_level_modules": [],
+      "version": "0.4.6"
+    },
+    {
+      "name": "cryptography",
+      "top_level_modules": [],
+      "version": "50.0.0"
+    },
+    {
+      "name": "dashscope",
+      "top_level_modules": [
+        "dashscope"
+      ],
+      "version": "1.27.0"
+    },
+    {
+      "name": "defusedxml",
+      "top_level_modules": [
+        "defusedxml"
+      ],
+      "version": "0.7.1"
+    },
+    {
+      "name": "Deprecated",
+      "top_level_modules": [
+        "deprecated"
+      ],
+      "version": "1.3.1"
+    },
+    {
+      "name": "dingtalk-stream",
+      "top_level_modules": [
+        "dingtalk_stream"
+      ],
+      "version": "0.24.3"
+    },
+    {
+      "name": "distro",
+      "top_level_modules": [
+        "distro"
+      ],
+      "version": "1.9.0"
+    },
+    {
+      "name": "docstring_parser",
+      "top_level_modules": [],
+      "version": "0.18.0"
+    },
+    {
+      "name": "et_xmlfile",
+      "top_level_modules": [
+        "et_xmlfile"
+      ],
+      "version": "2.0.0"
+    },
+    {
+      "name": "faiss-cpu",
+      "top_level_modules": [],
+      "version": "1.15.0"
+    },
+    {
+      "name": "fastapi",
+      "top_level_modules": [],
+      "version": "0.141.1"
+    },
+    {
+      "name": "filelock",
+      "top_level_modules": [],
+      "version": "3.32.3"
+    },
+    {
+      "name": "filetype",
+      "top_level_modules": [
+        "filetype"
+      ],
+      "version": "1.2.0"
+    },
+    {
+      "name": "Flask",
+      "top_level_modules": [],
+      "version": "3.1.3"
+    },
+    {
+      "name": "frozenlist",
+      "top_level_modules": [
+        "frozenlist"
+      ],
+      "version": "1.8.0"
+    },
+    {
+      "name": "google-auth",
+      "top_level_modules": [
+        "google"
+      ],
+      "version": "2.56.3"
+    },
+    {
+      "name": "google-genai",
+      "top_level_modules": [
+        "google"
+      ],
+      "version": "2.18.1"
+    },
+    {
+      "name": "greenlet",
+      "top_level_modules": [
+        "greenlet"
+      ],
+      "version": "3.5.5"
+    },
+    {
+      "name": "h11",
+      "top_level_modules": [
+        "h11"
+      ],
+      "version": "0.16.0"
+    },
+    {
+      "name": "h2",
+      "top_level_modules": [
+        "h2"
+      ],
+      "version": "4.4.1"
+    },
+    {
+      "name": "hpack",
+      "top_level_modules": [
+        "hpack"
+      ],
+      "version": "4.2.0"
+    },
+    {
+      "name": "httpcore",
+      "top_level_modules": [],
+      "version": "1.0.9"
+    },
+    {
+      "name": "httpcore2",
+      "top_level_modules": [],
+      "version": "2.12.0"
+    },
+    {
+      "name": "httpx",
+      "top_level_modules": [],
+      "version": "0.28.1"
+    },
+    {
+      "name": "httpx-sse",
+      "top_level_modules": [
+        "httpx_sse"
+      ],
+      "version": "0.4.3"
+    },
+    {
+      "name": "httpx2",
+      "top_level_modules": [],
+      "version": "2.12.0"
+    },
+    {
+      "name": "Hypercorn",
+      "top_level_modules": [],
+      "version": "0.18.0"
+    },
+    {
+      "name": "hyperframe",
+      "top_level_modules": [
+        "hyperframe"
+      ],
+      "version": "6.1.0"
+    },
+    {
+      "name": "idna",
+      "top_level_modules": [],
+      "version": "3.19"
+    },
+    {
+      "name": "itsdangerous",
+      "top_level_modules": [],
+      "version": "2.2.0"
+    },
+    {
+      "name": "jieba",
+      "top_level_modules": [
+        "jieba"
+      ],
+      "version": "0.42.1"
+    },
+    {
+      "name": "Jinja2",
+      "top_level_modules": [],
+      "version": "3.1.6"
+    },
+    {
+      "name": "jiter",
+      "top_level_modules": [],
+      "version": "0.16.0"
+    },
+    {
+      "name": "jsonschema",
+      "top_level_modules": [],
+      "version": "4.26.0"
+    },
+    {
+      "name": "jsonschema-specifications",
+      "top_level_modules": [],
+      "version": "2025.9.1"
+    },
+    {
+      "name": "lark-oapi",
+      "top_level_modules": [
+        "lark_oapi"
+      ],
+      "version": "1.7.3"
+    },
+    {
+      "name": "linkify-it-py",
+      "top_level_modules": [
+        "linkify_it"
+      ],
+      "version": "2.1.0"
+    },
+    {
+      "name": "loguru",
+      "top_level_modules": [],
+      "version": "0.7.3"
+    },
+    {
+      "name": "lxml",
+      "top_level_modules": [
+        "lxml"
+      ],
+      "version": "6.1.2"
+    },
+    {
+      "name": "mammoth",
+      "top_level_modules": [
+        "mammoth"
+      ],
+      "version": "1.12.1"
+    },
+    {
+      "name": "markdown-it-py",
+      "top_level_modules": [],
+      "version": "4.2.0"
+    },
+    {
+      "name": "markdownify",
+      "top_level_modules": [
+        "markdownify"
+      ],
+      "version": "1.2.3"
+    },
+    {
+      "name": "markitdown-no-magika",
+      "top_level_modules": [],
+      "version": "0.1.2"
+    },
+    {
+      "name": "MarkupSafe",
+      "top_level_modules": [
+        "markupsafe"
+      ],
+      "version": "3.0.3"
+    },
+    {
+      "name": "mcp",
+      "top_level_modules": [],
+      "version": "1.29.0"
+    },
+    {
+      "name": "mdit-py-plugins",
+      "top_level_modules": [],
+      "version": "0.6.1"
+    },
+    {
+      "name": "mdurl",
+      "top_level_modules": [],
+      "version": "0.1.2"
+    },
+    {
+      "name": "msvc_runtime",
+      "top_level_modules": [
+        "msvc_runtime"
+      ],
+      "version": "14.44.35112"
+    },
+    {
+      "name": "multidict",
+      "top_level_modules": [
+        "multidict"
+      ],
+      "version": "6.7.1"
+    },
+    {
+      "name": "numpy",
+      "top_level_modules": [],
+      "version": "2.5.2"
+    },
+    {
+      "name": "openai",
+      "top_level_modules": [],
+      "version": "3.3.1"
+    },
+    {
+      "name": "openpyxl",
+      "top_level_modules": [
+        "openpyxl"
+      ],
+      "version": "3.1.5"
+    },
+    {
+      "name": "optionaldict",
+      "top_level_modules": [
+        "optionaldict"
+      ],
+      "version": "0.1.2"
+    },
+    {
+      "name": "ormsgpack",
+      "top_level_modules": [],
+      "version": "1.12.2"
+    },
+    {
+      "name": "packaging",
+      "top_level_modules": [],
+      "version": "26.3"
+    },
+    {
+      "name": "pandas",
+      "top_level_modules": [],
+      "version": "3.0.5"
+    },
+    {
+      "name": "pillow",
+      "top_level_modules": [
+        "PIL"
+      ],
+      "version": "12.3.0"
+    },
+    {
+      "name": "pip",
+      "top_level_modules": [],
+      "version": "26.0.1"
+    },
+    {
+      "name": "platformdirs",
+      "top_level_modules": [],
+      "version": "4.11.3"
+    },
+    {
+      "name": "priority",
+      "top_level_modules": [
+        "priority"
+      ],
+      "version": "2.0.0"
+    },
+    {
+      "name": "prompt_toolkit",
+      "top_level_modules": [
+        "prompt_toolkit"
+      ],
+      "version": "3.0.53"
+    },
+    {
+      "name": "propcache",
+      "top_level_modules": [
+        "propcache"
+      ],
+      "version": "0.5.2"
+    },
+    {
+      "name": "psutil",
+      "top_level_modules": [
+        "psutil"
+      ],
+      "version": "7.1.3"
+    },
+    {
+      "name": "py-cord",
+      "top_level_modules": [
+        "discord"
+      ],
+      "version": "2.8.1"
+    },
+    {
+      "name": "pyasn1",
+      "top_level_modules": [
+        "pyasn1"
+      ],
+      "version": "0.6.4"
+    },
+    {
+      "name": "pyasn1_modules",
+      "top_level_modules": [
+        "pyasn1_modules"
+      ],
+      "version": "0.4.2"
+    },
+    {
+      "name": "pycparser",
+      "top_level_modules": [
+        "pycparser"
+      ],
+      "version": "3.0"
+    },
+    {
+      "name": "pycryptodome",
+      "top_level_modules": [
+        "Crypto"
+      ],
+      "version": "3.23.0"
+    },
+    {
+      "name": "pydantic",
+      "top_level_modules": [],
+      "version": "2.13.4"
+    },
+    {
+      "name": "pydantic-settings",
+      "top_level_modules": [],
+      "version": "2.15.0"
+    },
+    {
+      "name": "pydantic_core",
+      "top_level_modules": [],
+      "version": "2.46.4"
+    },
+    {
+      "name": "pydub",
+      "top_level_modules": [
+        "pydub"
+      ],
+      "version": "0.25.1"
+    },
+    {
+      "name": "Pygments",
+      "top_level_modules": [],
+      "version": "2.21.0"
+    },
+    {
+      "name": "PyJWT",
+      "top_level_modules": [
+        "jwt"
+      ],
+      "version": "2.13.0"
+    },
+    {
+      "name": "PyOTP",
+      "top_level_modules": [],
+      "version": "2.10.0"
+    },
+    {
+      "name": "pypdf",
+      "top_level_modules": [],
+      "version": "6.16.1"
+    },
+    {
+      "name": "pyromark",
+      "top_level_modules": [],
+      "version": "0.9.13"
+    },
+    {
+      "name": "PySocks",
+      "top_level_modules": [
+        "socks",
+        "sockshandler"
+      ],
+      "version": "1.7.1"
+    },
+    {
+      "name": "python-dateutil",
+      "top_level_modules": [
+        "dateutil"
+      ],
+      "version": "2.9.0.post0"
+    },
+    {
+      "name": "python-docx",
+      "top_level_modules": [
+        "docx"
+      ],
+      "version": "1.2.0"
+    },
+    {
+      "name": "python-dotenv",
+      "top_level_modules": [
+        "dotenv"
+      ],
+      "version": "1.2.3"
+    },
+    {
+      "name": "python-multipart",
+      "top_level_modules": [],
+      "version": "0.0.32"
+    },
+    {
+      "name": "python-ripgrep",
+      "top_level_modules": [],
+      "version": "0.0.8"
+    },
+    {
+      "name": "python-socks",
+      "top_level_modules": [
+        "python_socks"
+      ],
+      "version": "3.0.0"
+    },
+    {
+      "name": "python-telegram-bot",
+      "top_level_modules": [],
+      "version": "22.8"
+    },
+    {
+      "name": "pywin32",
+      "top_level_modules": [
+        "PyISAPI_loader",
+        "_win32sysloader",
+        "_winxptheme",
+        "adodbapi",
+        "adsi",
+        "authorization",
+        "axcontrol",
+        "axdebug",
+        "axscript",
+        "bits",
+        "dde",
+        "directsound",
+        "exchange",
+        "ifilter",
+        "internet",
+        "isapi",
+        "mapi",
+        "mmapfile",
+        "odbc",
+        "perfmon",
+        "perfmondata",
+        "propsys",
+        "pythoncom",
+        "pythonwin",
+        "pywintypes",
+        "servicemanager",
+        "shell",
+        "taskscheduler",
+        "timer",
+        "win32/winxpgui",
+        "win32\\lib\\_win32verstamp_pywin32ctypes",
+        "win32\\lib\\afxres",
+        "win32\\lib\\commctrl",
+        "win32\\lib\\mmsystem",
+        "win32\\lib\\netbios",
+        "win32\\lib\\ntsecuritycon",
+        "win32\\lib\\pywin32_bootstrap",
+        "win32\\lib\\pywin32_testutil",
+        "win32\\lib\\pywintypes",
+        "win32\\lib\\rasutil",
+        "win32\\lib\\regcheck",
+        "win32\\lib\\regutil",
+        "win32\\lib\\sspi",
+        "win32\\lib\\sspicon",
+        "win32\\lib\\win2kras",
+        "win32\\lib\\win32con",
+        "win32\\lib\\win32cryptcon",
+        "win32\\lib\\win32evtlogutil",
+        "win32\\lib\\win32gui_struct",
+        "win32\\lib\\win32inetcon",
+        "win32\\lib\\win32netcon",
+        "win32\\lib\\win32pdhquery",
+        "win32\\lib\\win32pdhutil",
+        "win32\\lib\\win32rcparser",
+        "win32\\lib\\win32serviceutil",
+        "win32\\lib\\win32timezone",
+        "win32\\lib\\win32traceutil",
+        "win32\\lib\\win32verstamp",
+        "win32\\lib\\winerror",
+        "win32\\lib\\winioctlcon",
+        "win32\\lib\\winnt",
+        "win32\\lib\\winperf",
+        "win32\\lib\\winxptheme",
+        "win32api",
+        "win32clipboard",
+        "win32com",
+        "win32comext",
+        "win32console",
+        "win32cred",
+        "win32crypt",
+        "win32event",
+        "win32evtlog",
+        "win32file",
+        "win32gui",
+        "win32help",
+        "win32inet",
+        "win32job",
+        "win32lz",
+        "win32net",
+        "win32pdh",
+        "win32pipe",
+        "win32print",
+        "win32process",
+        "win32profile",
+        "win32ras",
+        "win32security",
+        "win32service",
+        "win32trace",
+        "win32transaction",
+        "win32ts",
+        "win32ui",
+        "win32uiole",
+        "win32wnet"
+      ],
+      "version": "312"
+    },
+    {
+      "name": "PyYAML",
+      "top_level_modules": [
+        "_yaml",
+        "yaml"
+      ],
+      "version": "6.0.3"
+    },
+    {
+      "name": "qq-botpy",
+      "top_level_modules": [
+        "botpy"
+      ],
+      "version": "1.2.1"
+    },
+    {
+      "name": "qrcode",
+      "top_level_modules": [],
+      "version": "8.2"
+    },
+    {
+      "name": "Quart",
+      "top_level_modules": [],
+      "version": "0.21.0"
+    },
+    {
+      "name": "rank-bm25",
+      "top_level_modules": [
+        "rank_bm25"
+      ],
+      "version": "0.2.2"
+    },
+    {
+      "name": "referencing",
+      "top_level_modules": [],
+      "version": "0.37.0"
+    },
+    {
+      "name": "reportlab",
+      "top_level_modules": [
+        "reportlab"
+      ],
+      "version": "5.0.0"
+    },
+    {
+      "name": "requests",
+      "top_level_modules": [
+        "requests"
+      ],
+      "version": "2.34.2"
+    },
+    {
+      "name": "requests-toolbelt",
+      "top_level_modules": [
+        "requests_toolbelt"
+      ],
+      "version": "1.0.0"
+    },
+    {
+      "name": "rich",
+      "top_level_modules": [],
+      "version": "15.0.0"
+    },
+    {
+      "name": "rpds-py",
+      "top_level_modules": [],
+      "version": "2026.6.3"
+    },
+    {
+      "name": "shellingham",
+      "top_level_modules": [
+        "shellingham"
+      ],
+      "version": "1.5.4"
+    },
+    {
+      "name": "shipyard-neo-sdk",
+      "top_level_modules": [],
+      "version": "0.2.0"
+    },
+    {
+      "name": "shipyard-python-sdk",
+      "top_level_modules": [
+        "shipyard"
+      ],
+      "version": "0.2.4"
+    },
+    {
+      "name": "silk-python",
+      "top_level_modules": [
+        "pysilk"
+      ],
+      "version": "0.2.8"
+    },
+    {
+      "name": "six",
+      "top_level_modules": [
+        "six"
+      ],
+      "version": "1.17.0"
+    },
+    {
+      "name": "slack_sdk",
+      "top_level_modules": [
+        "slack",
+        "slack_sdk"
+      ],
+      "version": "3.43.0"
+    },
+    {
+      "name": "sniffio",
+      "top_level_modules": [
+        "sniffio"
+      ],
+      "version": "1.3.1"
+    },
+    {
+      "name": "socksio",
+      "top_level_modules": [],
+      "version": "1.0.0"
+    },
+    {
+      "name": "soupsieve",
+      "top_level_modules": [],
+      "version": "2.9.2"
+    },
+    {
+      "name": "SQLAlchemy",
+      "top_level_modules": [
+        "sqlalchemy"
+      ],
+      "version": "2.0.52"
+    },
+    {
+      "name": "sqlmodel",
+      "top_level_modules": [],
+      "version": "0.0.39"
+    },
+    {
+      "name": "sse-starlette",
+      "top_level_modules": [
+        "sse_starlette"
+      ],
+      "version": "3.4.8"
+    },
+    {
+      "name": "starlette",
+      "top_level_modules": [],
+      "version": "1.6.0"
+    },
+    {
+      "name": "telegramify-markdown",
+      "top_level_modules": [],
+      "version": "1.2.0"
+    },
+    {
+      "name": "tenacity",
+      "top_level_modules": [
+        "tenacity"
+      ],
+      "version": "9.1.4"
+    },
+    {
+      "name": "textual",
+      "top_level_modules": [],
+      "version": "8.2.8"
+    },
+    {
+      "name": "truststore",
+      "top_level_modules": [],
+      "version": "0.10.4"
+    },
+    {
+      "name": "typer",
+      "top_level_modules": [],
+      "version": "0.27.1"
+    },
+    {
+      "name": "typing-inspection",
+      "top_level_modules": [],
+      "version": "0.4.4"
+    },
+    {
+      "name": "typing_extensions",
+      "top_level_modules": [],
+      "version": "4.16.0"
+    },
+    {
+      "name": "tzdata",
+      "top_level_modules": [
+        "tzdata"
+      ],
+      "version": "2026.3"
+    },
+    {
+      "name": "tzlocal",
+      "top_level_modules": [
+        "tzlocal"
+      ],
+      "version": "5.4.4"
+    },
+    {
+      "name": "uc-micro-py",
+      "top_level_modules": [
+        "uc_micro"
+      ],
+      "version": "2.0.0"
+    },
+    {
+      "name": "urllib3",
+      "top_level_modules": [],
+      "version": "2.7.0"
+    },
+    {
+      "name": "uvicorn",
+      "top_level_modules": [],
+      "version": "0.52.4"
+    },
+    {
+      "name": "watchfiles",
+      "top_level_modules": [],
+      "version": "1.2.0"
+    },
+    {
+      "name": "wcwidth",
+      "top_level_modules": [],
+      "version": "0.8.2"
+    },
+    {
+      "name": "websocket-client",
+      "top_level_modules": [
+        "websocket"
+      ],
+      "version": "1.9.0"
+    },
+    {
+      "name": "websockets",
+      "top_level_modules": [
+        "websockets"
+      ],
+      "version": "15.0.1"
+    },
+    {
+      "name": "wechatpy",
+      "top_level_modules": [
+        "wechatpy"
+      ],
+      "version": "1.8.18"
+    },
+    {
+      "name": "Werkzeug",
+      "top_level_modules": [],
+      "version": "3.1.8"
+    },
+    {
+      "name": "win32_setctime",
+      "top_level_modules": [
+        "win32_setctime"
+      ],
+      "version": "1.2.0"
+    },
+    {
+      "name": "wrapt",
+      "top_level_modules": [
+        "wrapt",
+        "wrapt-stubs"
+      ],
+      "version": "2.3.0"
+    },
+    {
+      "name": "wsproto",
+      "top_level_modules": [
+        "wsproto"
+      ],
+      "version": "1.3.2"
+    },
+    {
+      "name": "xinference-client",
+      "top_level_modules": [
+        "xinference_client"
+      ],
+      "version": "3.2.0"
+    },
+    {
+      "name": "xlrd",
+      "top_level_modules": [
+        "xlrd"
+      ],
+      "version": "2.0.2"
+    },
+    {
+      "name": "xmltodict",
+      "top_level_modules": [
+        "xmltodict"
+      ],
+      "version": "1.0.4"
+    },
+    {
+      "name": "yarl",
+      "top_level_modules": [
+        "yarl"
+      ],
+      "version": "1.24.5"
+    }
+  ],
+  "version": 1
+}

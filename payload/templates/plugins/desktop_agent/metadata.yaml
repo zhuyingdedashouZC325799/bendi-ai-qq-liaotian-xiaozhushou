@@ -1,0 +1,6 @@
+name: desktop_agent
+display_name: 主人专属电脑 Agent
+desc: 两个主人QQ号私聊或群聊艾特控制本地电脑，打开软件、截图、圈选点击
+version: 1.0.0
+author: local
+repo: ""

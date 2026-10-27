@@ -1,0 +1,300 @@
+from __future__ import annotations
+
+import atexit
+import ctypes
+import functools
+import json
+import os
+import runpy
+import ssl
+import sys
+import threading
+import time
+from pathlib import Path
+
+BACKEND_DIR = Path(__file__).resolve().parent
+APP_DIR = BACKEND_DIR / "app"
+_WINDOWS_DLL_DIRECTORY_HANDLES: list[object] = []
+# Keep this in sync with BACKEND_STARTUP_HEARTBEAT_PATH_ENV in src-tauri/src/app_constants.rs.
+STARTUP_HEARTBEAT_ENV = "ASTRBOT_BACKEND_STARTUP_HEARTBEAT_PATH"
+RUNTIME_CORE_LOCK_ENV = "ASTRBOT_DESKTOP_CORE_LOCK_PATH"
+STARTUP_HEARTBEAT_INTERVAL_SECONDS = 2.0
+STARTUP_HEARTBEAT_STOP_JOIN_TIMEOUT_SECONDS = 1.0
+
+
+def configure_stdio_utf8() -> None:
+    os.environ.setdefault("PYTHONUTF8", "1")
+    os.environ.setdefault("PYTHONIOENCODING", "utf-8")
+
+    for stream_name in ("stdout", "stderr"):
+        stream = getattr(sys, stream_name, None)
+        reconfigure = getattr(stream, "reconfigure", None)
+        if not callable(reconfigure):
+            continue
+        try:
+            reconfigure(encoding="utf-8", errors="replace")
+        except Exception:
+            continue
+
+
+def configure_windows_dll_search_path() -> None:
+    if sys.platform != "win32" or not hasattr(os, "add_dll_directory"):
+        return
+
+    runtime_executable_dir = Path(sys.executable).resolve().parent
+    site_packages_dirs = [
+        runtime_executable_dir / "Lib" / "site-packages",
+        BACKEND_DIR / "python" / "Lib" / "site-packages",
+    ]
+    candidates = [
+        runtime_executable_dir,
+        runtime_executable_dir / "DLLs",
+        BACKEND_DIR / "python",
+        BACKEND_DIR / "python" / "DLLs",
+    ]
+    for site_packages_dir in site_packages_dirs:
+        candidates.extend(
+            [
+                site_packages_dir / "cryptography.libs",
+                site_packages_dir / "cryptography" / "hazmat" / "bindings",
+            ],
+        )
+
+    normalized_added: set[str] = set()
+    path_entries: list[str] = []
+    for candidate in candidates:
+        if not candidate.is_dir():
+            continue
+        candidate_str = str(candidate)
+        candidate_key = candidate_str.lower()
+        if candidate_key in normalized_added:
+            continue
+        normalized_added.add(candidate_key)
+        path_entries.append(candidate_str)
+        try:
+            _WINDOWS_DLL_DIRECTORY_HANDLES.append(
+                os.add_dll_directory(candidate_str),
+            )
+        except OSError:
+            continue
+
+    if path_entries:
+        existing_path = os.environ.get("PATH", "")
+        os.environ["PATH"] = (
+            ";".join(path_entries + [existing_path])
+            if existing_path
+            else ";".join(path_entries)
+        )
+
+
+def preload_windows_runtime_dlls() -> None:
+    if sys.platform != "win32":
+        return
+
+    runtime_executable_dir = Path(sys.executable).resolve().parent
+    runtime_dll_dir = runtime_executable_dir / "DLLs"
+    backend_runtime_dir = BACKEND_DIR / "python"
+    backend_runtime_dll_dir = backend_runtime_dir / "DLLs"
+    candidate_dirs = [
+        runtime_executable_dir,
+        runtime_dll_dir,
+        backend_runtime_dir,
+        backend_runtime_dll_dir,
+    ]
+    patterns = [
+        "python3.dll",
+        "python*.dll",
+        "vcruntime*.dll",
+        "libcrypto-*.dll",
+        "libssl-*.dll",
+    ]
+    loaded: set[str] = set()
+    for candidate_dir in candidate_dirs:
+        if not candidate_dir.is_dir():
+            continue
+        for pattern in patterns:
+            for dll_path in candidate_dir.glob(pattern):
+                normalized_path = str(dll_path.resolve()).lower()
+                if normalized_path in loaded:
+                    continue
+                loaded.add(normalized_path)
+                try:
+                    ctypes.WinDLL(str(dll_path))
+                except OSError:
+                    continue
+
+
+_ORIGINAL_CREATE_DEFAULT_CONTEXT = None
+
+# We globally monkey-patch ssl.create_default_context on Windows.
+# This prevents OpenSSL Applink crashes caused by default CA loading
+# by enforcing the use of certifi's CA bundle for SERVER_AUTH.
+def configure_windows_safe_default_ssl_context() -> None:
+    global _ORIGINAL_CREATE_DEFAULT_CONTEXT
+    if sys.platform != "win32":
+        return
+    if _ORIGINAL_CREATE_DEFAULT_CONTEXT is not None:
+        return
+
+    try:
+        import certifi
+    except ImportError:
+        print(
+            "[ssl-context] certifi not available; skipping safe default context patch",
+            file=sys.stderr,
+        )
+        return
+
+    _ORIGINAL_CREATE_DEFAULT_CONTEXT = ssl.create_default_context
+
+    # The launcher owns this process, so patching ssl globally is intentional.
+    @functools.wraps(_ORIGINAL_CREATE_DEFAULT_CONTEXT)
+    def create_default_context(
+        purpose: ssl.Purpose = ssl.Purpose.SERVER_AUTH,
+        *,
+        cafile: str | None = None,
+        capath: str | None = None,
+        cadata: str | bytes | None = None,
+    ) -> ssl.SSLContext:
+        if (
+            purpose == ssl.Purpose.SERVER_AUTH
+            and cafile is None
+            and capath is None
+            and cadata is None
+        ):
+            cafile = certifi.where()
+        return _ORIGINAL_CREATE_DEFAULT_CONTEXT(
+            purpose,
+            cafile=cafile,
+            capath=capath,
+            cadata=cadata,
+        )
+
+    ssl.create_default_context = create_default_context
+
+
+def resolve_startup_heartbeat_path() -> Path | None:
+    raw = os.environ.get(STARTUP_HEARTBEAT_ENV, "").strip()
+    if not raw:
+        return None
+    return Path(raw)
+
+
+def build_heartbeat_payload(state: str) -> dict[str, object]:
+    return {
+        "pid": os.getpid(),
+        "state": state,
+        "updated_at_ms": int(time.time() * 1000),
+    }
+
+
+def atomic_write_json(path: Path, payload: dict[str, object]) -> None:
+    temp_path = path.with_name(f"{path.name}.tmp")
+    temp_path.write_text(
+        json.dumps(payload, separators=(",", ":")),
+        encoding="utf-8",
+    )
+    try:
+        temp_path.replace(path)
+    except Exception:
+        try:
+            temp_path.unlink(missing_ok=True)
+        except Exception:
+            pass
+        raise
+
+
+def write_startup_heartbeat(
+    path: Path, state: str, *, warn_on_error: bool = False
+) -> bool:
+    try:
+        path.parent.mkdir(parents=True, exist_ok=True)
+        atomic_write_json(path, build_heartbeat_payload(state))
+        return True
+    except Exception as exc:
+        if warn_on_error:
+            print(
+                f"[startup-heartbeat] failed to write heartbeat to {path}: {exc.__class__.__name__}: {exc}",
+                file=sys.stderr,
+            )
+        return False
+
+
+def heartbeat_loop(
+    path: Path, interval_seconds: float, stop_event: threading.Event
+) -> None:
+    # At least one successful write has happened.
+    had_successful_write = False
+    # A warning has already been emitted since the last successful write.
+    warning_emitted_since_last_success = False
+
+    def should_warn() -> bool:
+        # Before the first successful heartbeat we want every failure to surface so startup
+        # path/permission issues stay visible. After a success, only warn on the first failure in
+        # each consecutive failure run to avoid log spam.
+        return (not had_successful_write) or (not warning_emitted_since_last_success)
+
+    ok = write_startup_heartbeat(path, "starting", warn_on_error=True)
+    if ok:
+        had_successful_write = True
+    else:
+        warning_emitted_since_last_success = True
+
+    while not stop_event.wait(interval_seconds):
+        warn_now = should_warn()
+        ok = write_startup_heartbeat(path, "starting", warn_on_error=warn_now)
+        if ok:
+            had_successful_write = True
+            warning_emitted_since_last_success = False
+        elif warn_now:
+            warning_emitted_since_last_success = True
+
+
+def start_startup_heartbeat() -> None:
+    heartbeat_path = resolve_startup_heartbeat_path()
+    if heartbeat_path is None:
+        return
+
+    stop_event = threading.Event()
+    thread = threading.Thread(
+        target=heartbeat_loop,
+        args=(heartbeat_path, STARTUP_HEARTBEAT_INTERVAL_SECONDS, stop_event),
+        name="astrbot-startup-heartbeat",
+        daemon=True,
+    )
+
+    def on_exit() -> None:
+        stop_event.set()
+        thread.join(timeout=STARTUP_HEARTBEAT_STOP_JOIN_TIMEOUT_SECONDS)
+        write_startup_heartbeat(heartbeat_path, "stopping", warn_on_error=True)
+
+    thread.start()
+    atexit.register(on_exit)
+
+
+def configure_runtime_core_lock_path() -> None:
+    lock_path = APP_DIR / "runtime-core-lock.json"
+    if lock_path.is_file():
+        os.environ.setdefault(RUNTIME_CORE_LOCK_ENV, str(lock_path))
+
+
+def main() -> None:
+    configure_stdio_utf8()
+    configure_windows_dll_search_path()
+    preload_windows_runtime_dlls()
+    configure_windows_safe_default_ssl_context()
+    start_startup_heartbeat()
+    configure_runtime_core_lock_path()
+
+    sys.path.insert(0, str(APP_DIR))
+
+    main_file = APP_DIR / "main.py"
+    if not main_file.is_file():
+        raise FileNotFoundError(f"Backend entrypoint not found: {main_file}")
+
+    sys.argv[0] = str(main_file)
+    runpy.run_path(str(main_file), run_name="__main__")
+
+
+if __name__ == "__main__":
+    main()

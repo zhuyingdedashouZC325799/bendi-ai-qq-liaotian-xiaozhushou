@@ -1,0 +1,6 @@
+name: music_request
+display_name: 本地助手点歌
+desc: QQ音乐和网易云网页搜索、图片歌单、数字选歌并发送 MP3
+version: 1.3.0
+author: local
+repo: ""

@@ -1,0 +1,15 @@
+name: 视频解析
+desc: 识别抖音/快手/B站/小红书等视频分享链接，自动解析并发送视频文件，发完立即删除本地缓存，不占电脑存储
+help: 在群里或私聊直接发送视频分享链接即可自动触发；支持抖音/快手/B站/小红书/微博/头条/皮皮虾/皮皮搞笑/最右
+version: 1.0.0
+author: local
+repo: https://github.com/jiuhunwl/short_videos
+config:
+  parse_base:
+    name: 本地解析服务地址
+    type: str
+    default: http://127.0.0.1:8088/api
+  tmp_dir:
+    name: 视频缓存目录
+    type: str
+    default: D:/AI/tmp

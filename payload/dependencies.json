@@ -1,0 +1,24 @@
+{
+  "uv": {
+    "url": "https://github.com/astral-sh/uv/releases/download/0.13.6/uv-x86_64-pc-windows-msvc.zip",
+    "sha256": "a2a8820d5eea32f08ef467ef3b7f66883a9b076d5737a2fc2fbb5f458d1bb50f",
+    "bytes": 15239500,
+    "version": "0.13.6"
+  },
+  "ollama": {
+    "url": "https://github.com/ollama/ollama/releases/download/v0.40.11/ollama-windows-amd64.zip",
+    "sha256": "bda4a493ba8a7c24d57263cd843cd68cee84f44aed4299eeed532acad7eda12a",
+    "bytes": 1586356606,
+    "version": "v0.40.11"
+  },
+  "napcat": {
+    "url": "https://github.com/NapNeko/NapCatQQ/releases/download/v4.18.41/NapCat.Shell.Windows.OneKey.zip",
+    "sha256": "46c3ec155aa61f12e89bbf97013a21243d00b0019b5565992a88852d7627f39c",
+    "bytes": 994134,
+    "version": "v4.18.41"
+  },
+  "dashboard": {
+    "url": "https://github.com/AstrBotDevs/AstrBot/releases/download/v4.27.4/AstrBot-v4.27.4-dashboard.zip",
+    "sha256": "9d6abcc07657940571544c305c504512cf32a51564a754ec7699ef095920231e"
+  }
+}
